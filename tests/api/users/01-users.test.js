@@ -84,6 +84,5 @@ test("should validate a post request with JSON from a data file", async () => {
   );
   expect(responseBody.data).toHaveProperty("firstName", "Test-1");
 
-  const createdUser = await response.json();
-  testUserId = createdUser.data._id; // Store for cleanup
+  testUserId = responseBody.data._id; // Store for cleanup
 });

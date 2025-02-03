@@ -1,5 +1,4 @@
 const { test, expect } = require("@playwright/test");
-const Assertions = require("../../../utilities/assertions.utils");
 const apiUtils = require("../../../utilities/apiClient.utils");
 const Logger = require("../../../utilities/logger.utils");
 const generateUser = require("./dynamic-request.data");
@@ -20,7 +19,7 @@ test.afterEach(async () => {
   }
 });
 
-test.only("Verify if email is unique", async () => {
+test("Verify if email is unique", async () => {
   const testUser1 = generateUser({});
   const response = await apiUtils.post("/users/register", testUser1);
   await Logger.logResponse(response);
@@ -31,5 +30,5 @@ test.only("Verify if email is unique", async () => {
   const response_2 = await apiUtils.post("/users/register", testUser2);
   await Logger.logResponse(response_2);
 
-  testUserId = testUserResponseBody.data._id;
+  testUserId = testUser_1_ResponseBody.data._id;
 });

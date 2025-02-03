@@ -1,5 +1,4 @@
 const { test, expect } = require("@playwright/test");
-const Assertions = require("../../../utilities/assertions.utils");
 const apiUtils = require("../../../utilities/apiClient.utils");
 const Logger = require("../../../utilities/logger.utils");
 

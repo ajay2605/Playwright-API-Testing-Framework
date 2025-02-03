@@ -1,0 +1,30 @@
+{
+  "name": "playwright-scalable-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "rm -rf allure-results && npx playwright test",
+    "test:smoke": "npm run test -- --grep @smoke",
+    "report": "allure serve allure-results"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.4.0",
+    "chai": "^5.1.2",
+    "playwright": "^1.50.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "allure-playwright": "^3.0.9",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.19.0",
+    "jest-json-schema": "^6.1.0",
+    "prettier": "^3.4.2"
+  }
+}

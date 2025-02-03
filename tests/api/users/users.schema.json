@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "message": { "type": "string" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "mobileNumber": { "type": "string" },
+        "otp": { "type": "string" },
+        "email": { "type": "string" },
+        "password": { "type": "string" },
+        "_id": { "type": "string" },
+        "__v": { "type": "number" }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "mobileNumber",
+        "otp",
+        "email",
+        "password",
+        "_id",
+        "__v"
+      ]
+    }
+  },
+  "required": ["message", "data"]
+}

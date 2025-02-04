@@ -3,7 +3,7 @@ const apiClientUtils = require("../../../utilities/apiClient.utils");
 const Logger = require("../../../utilities/logger.utils");
 const generateProduct = require("./products.data");
 
-test.describe.only("Products API Tests", () => {
+test.describe("Products API Tests", () => {
   let productId;
   test.beforeAll(async () => {
     await apiClientUtils.createContext();

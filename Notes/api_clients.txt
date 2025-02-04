@@ -1,0 +1,52 @@
+const { request } = require("@playwright/test");
+const config = require("../config/config");
+const Logger = require("./logger.utils");
+const { generateAuthToken } = require("../resources/generateToken");
+
+class ApiUtils {
+  constructor() {
+    this.baseUrl = config.baseUrl;
+  }
+
+  async createContext() {
+    this.context = await request.newContext();
+    this.token = await generateAuthToken();
+    return this;
+  }
+
+  async dispose() {
+    if (this.context) {
+      await this.context.dispose();
+    }
+  }
+
+  async sendRequest(method, endpoint, { data = null, headers = {} } = {}) {
+    try {
+      if (!this.context) throw new Error("API context not initialized.");
+      const url = `${this.baseUrl}${endpoint}`;
+      const requestHeaders = {
+        ...headers,
+        Authorization: this.token,
+      };
+
+      const options = { headers: requestHeaders };
+      if (data) options.data = data;
+
+      const response = await this.context[method.toLowerCase()](url, options);
+      return response;
+    } catch (error) {
+      Logger.error(`${method.toUpperCase()} request to ${endpoint} failed: ${error.message}`);
+      throw error;
+    }
+  }
+}
+
+module.exports = new ApiUtils();
+
+
+How to Use:
+
+await apiUtils.sendRequest("GET", "/users");
+await apiUtils.sendRequest("POST", "/users", { data: { name: "John" } });
+await apiUtils.sendRequest("DELETE", "/users/1");
+await apiUtils.sendRequest("PUT", "/users/1", { data: { name: "Updated Name" } });

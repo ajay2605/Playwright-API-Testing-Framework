@@ -76,6 +76,29 @@ class ApiUtils {
       throw error;
     }
   }
+
+  async sendRequest(method, endpoint, { data = null, headers = {} } = {}) {
+    try {
+      if (!this.context) throw new Error("API context not initialized.");
+      const url = `${this.baseUrl}${endpoint}`;
+      const requestHeaders = {
+        ...headers,
+        Authorization: this.token,
+      };
+
+      const options = { headers: requestHeaders };
+      if (data) options.data = data;
+
+      const response = await this.context[method.toLowerCase()](url, options);
+      return response;
+    } catch (error) {
+      Logger.error(
+        `[${method.toUpperCase()}] -- request to ${endpoint} failed: ${
+          error.message
+        }`
+      );
+    }
+  }
 }
 
 module.exports = new ApiUtils();

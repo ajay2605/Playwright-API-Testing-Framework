@@ -46,7 +46,7 @@ test("should validate a post request @smoke", async () => {
   const response = await apiUtils.post("/users/register", {
     firstName: "Test-1",
     lastName: "lehman ",
-    email: "user1@test.com",
+    email: "user4@test.com",
     password: "Test@123",
     mobileNumber: "0987656789",
     otp: "",

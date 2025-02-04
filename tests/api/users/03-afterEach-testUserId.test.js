@@ -39,11 +39,13 @@ test.describe("User API Tests", () => {
   });
 
   //   Test-user-Id is present, so it will delete the user.
-  test("POST /users/register creates new user", async () => {
+  // @Performance
+  test("POST /users/register creates new user", {tag: ["@Performance"]}, async () => {
     const testUser = generateTestUser();
     const response = await apiUtils.post("/users/register", testUser);
-    await Logger.logResponse(response);
     const createdUser = await response.json();
     testUserId = createdUser.data._id; // Store for cleanup
+
+    await Logger.logResponse(response);
   });
 });

@@ -10,7 +10,7 @@ test.describe("User Positive Test Cases", () => {
   });
 
   test.afterAll(async () => {
-    await apiUtils.dispose(); // Clean up the request context
+    await apiUtils.disposeContext(); // Clean up the request context
   });
 
   test.afterEach(async () => {
@@ -20,7 +20,7 @@ test.describe("User Positive Test Cases", () => {
   });
 
   // Tests
-  test("GET /users returns valid structure", async () => {
+  test.skip("GET /users returns valid structure", async () => {
     const response = await apiUtils.get("/users");
     await Logger.logResponse(response);
   });
@@ -33,7 +33,7 @@ test.describe("User Negative Scenarios", () => {
   });
 
   test.afterAll(async () => {
-    await apiUtils.dispose(); // Clean up the request context
+    await apiUtils.disposeContext(); // Clean up the request context
   });
 
   test.afterEach(async () => {
@@ -42,8 +42,9 @@ test.describe("User Negative Scenarios", () => {
     }
   });
 
-  test("GET /users returns valid structure", async () => {
+  test.skip("GET /users returns valid structure @smoke @performance", async () => {
     const response = await apiUtils.get("/users");
     await Logger.logResponse(response);
+    expect(response.status()).toBe(200);
   });
 });

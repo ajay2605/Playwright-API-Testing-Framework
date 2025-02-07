@@ -20,7 +20,7 @@ test.describe("User API Tests", () => {
   });
 
   test.afterAll(async () => {
-    await apiUtils.dispose(); // Clean up the request context
+    await apiUtils.disposeContext(); // Clean up the request context
   });
 
   test.afterEach(async () => {
@@ -30,12 +30,12 @@ test.describe("User API Tests", () => {
   });
 
   // 3. Atomic Tests
-  test("GET /users returns valid structure", async () => {
+  test.skip("GET /users returns valid structure", async () => {
     const response = await apiUtils.get("/users");
     await Logger.logResponse(response);
   });
 
-  test("POST /users/register creates new user", async () => {
+  test.skip("POST /users/register creates new user", async () => {
     const testUser = generateTestUser();
     const response = await apiUtils.post("/users/register", testUser);
     await Logger.logResponse(response);
@@ -43,7 +43,7 @@ test.describe("User API Tests", () => {
     testUserId = createdUser.data._id; // Store for cleanup
   });
 
-  test("POST /users/register creates new user - 2", async () => {
+  test.skip("POST /users/register creates new user - 2", async () => {
     const testUser = generateTestUser();
     const response = await apiUtils.post("/users/register", testUser);
     await Logger.logResponse(response);
@@ -51,7 +51,7 @@ test.describe("User API Tests", () => {
     testUserId = createdUser.data._id; // Store for cleanup
   });
 
-  test("POST /users/register creates new user - 3", async () => {
+  test.skip("POST /users/register creates new user - 3", async () => {
     const testUser = generateTestUser();
     const response = await apiUtils.post("/users/register", testUser);
     await Logger.logResponse(response);

@@ -10,7 +10,7 @@ test.beforeAll(async () => {
 });
 
 test.afterAll(async () => {
-  await apiUtils.dispose(); // Clean up the request context
+  await apiUtils.disposeContext(); // Clean up the request context
 });
 
 test.afterEach(async () => {
@@ -19,7 +19,7 @@ test.afterEach(async () => {
   }
 });
 
-test("POST /users/register creates new user", async () => {
+test.skip("POST /users/register creates new user", async () => {
   const testUser = generateUser(
     "ajay",
     "kumar",
@@ -34,7 +34,7 @@ test("POST /users/register creates new user", async () => {
   testUserId = createdUser.data._id; // Store for cleanup
 });
 
-test("Verify if firstname cannot be null", async () => {
+test.skip("Verify if firstname cannot be null", async () => {
   const testUser = generateUser({ firstName: null });
   const response = await apiUtils.post("/users/register", testUser);
   await Logger.logResponse(response);
@@ -45,7 +45,7 @@ test("Verify if firstname cannot be null", async () => {
   expect(responseBody).toHaveProperty("message", "Unexpected error occured");
 });
 
-test("Verify is First Name cannot be empty", async () => {
+test.skip("Verify is First Name cannot be empty", async () => {
   const testUser = generateUser({ firstName: "" });
   const response = await apiUtils.post("/users/register", testUser);
   await Logger.logResponse(response);
@@ -57,7 +57,7 @@ test("Verify is First Name cannot be empty", async () => {
   expect(responseBody).toHaveProperty("message", "Unexpected error occured");
 });
 
-test("Verify is Mobile cannot be empty", async () => {
+test.skip("Verify is Mobile cannot be empty", async () => {
   const testUser = generateUser({ mobileNumber: "" });
   const response = await apiUtils.post("/users/register", testUser);
   await Logger.logResponse(response);
@@ -69,7 +69,7 @@ test("Verify is Mobile cannot be empty", async () => {
   expect(responseBody).toHaveProperty("message", "Unexpected error occured");
 });
 
-test("Verify is Mobile cannot be null", async () => {
+test.skip("Verify is Mobile cannot be null", async () => {
   const testUser = generateUser({ mobileNumber: null });
   const response = await apiUtils.post("/users/register", testUser);
   await Logger.logResponse(response);

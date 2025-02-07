@@ -14,9 +14,9 @@ class ApiUtils {
     return this;
   }
 
-  async dispose() {
+  async disposeContext() {
     if (this.context) {
-      await this.context.dispose();
+      await this.context.disposeContext();
     }
   }
 

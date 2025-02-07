@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "rm -rf allure-results && npx playwright test",
+    "changed": "rm -rf allure-results && npx playwright test --only-changed",
     "test:smoke": "npm run test -- --grep @smoke",
     "test:performance": "npm run test -- --grep @Performance --repeat-each 100",
     "report": "allure serve allure-results"

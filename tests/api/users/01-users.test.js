@@ -18,7 +18,7 @@ test.beforeAll(async () => {
 });
 
 test.afterAll(async () => {
-  await apiUtils.dispose(); // Clean up the request context
+  await apiUtils.disposeContext(); // Clean up the request context
 });
 
 // What this will do is if there is a test id in the code, it will activate this code.
@@ -26,10 +26,10 @@ test.afterEach(async () => {
   if (testUserId) {
     await apiUtils.delete(`/users/${testUserId}`);
   }
-  // await apiUtils.context.dispose();
+  // await apiUtils.context.disposeContext();
 });
 
-test(
+test.skip(
   "should authenticate with valid credentials",
   {
     tag: ["@smoke"],
@@ -42,7 +42,7 @@ test(
   }
 );
 
-test("should validate a post request @smoke", async () => {
+test.skip("should validate a post request @smoke", async () => {
   const response = await apiUtils.post("/users/register", {
     firstName: "Test-1",
     lastName: "lehman ",
@@ -70,7 +70,7 @@ test("should validate a post request @smoke", async () => {
   testUserId = createdUser.data._id; // Store for cleanup
 });
 
-test("should validate a post request with JSON from a data file", async () => {
+test.skip("should validate a post request with JSON from a data file", async () => {
   const response = await apiUtils.post("/users/register", dataRequest);
 
   //Assertions

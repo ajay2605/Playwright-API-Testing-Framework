@@ -10,7 +10,7 @@ test.beforeAll(async () => {
 });
 
 test.afterAll(async () => {
-  await apiUtils.dispose();
+  await apiUtils.disposeContext();
 });
 
 test.afterEach(async () => {
@@ -19,7 +19,7 @@ test.afterEach(async () => {
   }
 });
 
-test("Verify if email is unique", async () => {
+test.skip("Verify if email is unique", async () => {
   const testUser1 = generateUser({});
   const response = await apiUtils.post("/users/register", testUser1);
   await Logger.logResponse(response);

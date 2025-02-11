@@ -20,7 +20,7 @@ test.describe("User Positive Test Cases", () => {
   });
 
   // Tests
-  test.skip("GET /users returns valid structure", async () => {
+  test("GET /users returns valid structure", async () => {
     const response = await apiUtils.get("/users");
     await Logger.logResponse(response);
   });
@@ -42,7 +42,7 @@ test.describe("User Negative Scenarios", () => {
     }
   });
 
-  test.skip("GET /users returns valid structure @smoke @performance", async () => {
+  test("GET /users returns valid structure @smoke @performance", async () => {
     const response = await apiUtils.get("/users");
     await Logger.logResponse(response);
     expect(response.status()).toBe(200);

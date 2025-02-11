@@ -19,7 +19,7 @@ test.afterEach(async () => {
   }
 });
 
-test.skip("Verify if email is unique", async () => {
+test("Verify if email is unique", async () => {
   const testUser1 = generateUser({});
   const response = await apiUtils.post("/users/register", testUser1);
   await Logger.logResponse(response);

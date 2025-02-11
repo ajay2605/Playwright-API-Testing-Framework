@@ -4,16 +4,18 @@
 4. Email uniqueness scenario -- Done
 5. Example Test Cases
    1. Regular Test case
-   2. Regular Test case with data from test
-   3. With Describe
-   4. test.describe.parallel()
-   5. test.describe.serial()
-   6. With Tags
-   7. With data from a json file
-   8. With data from a faker file
-   9.  Email Uniquness
-   10. Schema Validation
-   11. With Everything
+   2. Crud Test case with request
+   3. Regular Test case with data from data file
+   4. Simple tests With Describe
+   5. Crud with Describe
+   6. test.describe.parallel()
+   7. test.describe.serial()
+   8. With Tags
+   9. With data from a json file
+   10. With data from a faker file
+   11. Email Uniquness
+   12. Schema Validation
+   13. With Everything
       1.  Describe
       2.  Annotations
       3.  Data from faker file

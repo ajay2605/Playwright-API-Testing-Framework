@@ -10,12 +10,12 @@
 }
 
 1. test.only - Runs only one test
-2. test.skip - to skip tests
+2. test - to skip tests
 3. test.fixme - PW wont run this test.It is just to tell that this needs fixing
 4. Conditional Skipping
 
    test('skip this test', async ({ page, browserName }) => {
-   test.skip(browserName === 'firefox', 'Still working on it');
+   test(browserName === 'firefox', 'Still working on it');
    });
 
 5. Run all other tests expect fast
@@ -38,14 +38,14 @@ description: 'https://github.com/microsoft/playwright/issues/23180',
 8. Add Smoke and Regression
 
 test(
-  "should authenticate with valid credentials",
-  {
-    tag: ["@Smoke", "@Regression", "@Performance"],
-  },
-  async () => {
-    const response = await apiUtils.get("/users");
-    // Logger.logResponse(response);
-    expect(response).toBeTruthy();
-    expect(response.status()).toBe(200);
-  }
+"should authenticate with valid credentials",
+{
+tag: ["@Smoke", "@Regression", "@Performance"],
+},
+async () => {
+const response = await apiUtils.get("/users");
+// Logger.logResponse(response);
+expect(response).toBeTruthy();
+expect(response.status()).toBe(200);
+}
 );

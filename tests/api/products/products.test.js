@@ -17,7 +17,7 @@ test.describe("Products API Tests", () => {
     await apiClientUtils.disposeContext();
   });
 
-  test.skip("Verify if user can get all products", async () => {
+  test("Verify if user can get all products", async () => {
     const response = await apiClientUtils.get("/products");
     await Logger.logResponse(response);
 
@@ -30,7 +30,7 @@ test.describe("Products API Tests", () => {
     );
   });
 
-  test.skip("Verify if user can create a product", async () => {
+  test("Verify if user can create a product", async () => {
     const testProduct = generateProduct({});
     console.log(testProduct);
     const response = await apiClientUtils.post("/products", testProduct);

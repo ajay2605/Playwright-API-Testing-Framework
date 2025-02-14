@@ -16,7 +16,7 @@ test.describe("User API Tests", () => {
     }
   });
 
-  test.only("Get all Users", async () => {
+  test("Get all Users", async () => {
     const response = await apiClientUtils.sendRequest("get", "/users");
     const body = await response.json();
     // console.log(body);

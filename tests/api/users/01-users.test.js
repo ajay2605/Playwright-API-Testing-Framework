@@ -24,12 +24,12 @@ test.afterAll(async () => {
 // What this will do is if there is a test id in the code, it will activate this code.
 test.afterEach(async () => {
   if (testUserId) {
-    await apiUtils.delete(`/users/${testUserId}`);
+    await apiUtils.sendRequest('delete',`/users/${testUserId}`);
   }
   // await apiUtils.context.disposeContext();
 });
 
-test.skip(
+test(
   "should authenticate with valid credentials",
   {
     tag: ["@smoke"],
@@ -42,18 +42,19 @@ test.skip(
   }
 );
 
-test.skip("should validate a post request @smoke", async () => {
-  const response = await apiUtils.post("/users/register", {
+test("should validate a post request @smoke", async () => {
+  const response = await apiUtils.sendRequest('post',"/users/register", {data: {
     firstName: "Test-1",
     lastName: "lehman ",
     email: "user4@test.com",
     password: "Test@123",
     mobileNumber: "0987656789",
-    otp: "",
-  });
-
-  const getResponse = await apiUtils.get("/users");
+    otp: "45435345",
+  }});
   Logger.logResponse(response);
+
+  const getResponse = await apiUtils.sendRequest("get","/users");
+  Logger.logResponse(getResponse);
 
   //Assertions
   expect(response.ok()).toBeTruthy();
@@ -70,8 +71,8 @@ test.skip("should validate a post request @smoke", async () => {
   testUserId = createdUser.data._id; // Store for cleanup
 });
 
-test.skip("should validate a post request with JSON from a data file", async () => {
-  const response = await apiUtils.post("/users/register", dataRequest);
+test("should validate a post request with JSON from a data file", async () => {
+  const response = await apiUtils.sendRequest("post","/users/register", {data: dataRequest});
 
   //Assertions
   expect(response.ok()).toBeTruthy();

@@ -33,13 +33,13 @@ test.describe("User API Tests", () => {
   });
 
   // No Test-User-Id, so nothing happens
-  test.skip("GET /users returns valid structure", async () => {
+  test("GET /users returns valid structure", async () => {
     const response = await apiUtils.get("/users");
     await Logger.logResponse(response);
   });
 
   //   Test-user-Id is present, so it will delete the user.
-  test.skip(
+  test(
     "POST /users/register creates new user",
     { tag: ["@Performance"] },
     async () => {
@@ -47,6 +47,8 @@ test.describe("User API Tests", () => {
       const response = await apiUtils.post("/users/register", testUser);
       const body = await response.json();
       testUserId = body.data._id; // Store for cleanup
+
+      await expect(body.data).toHaveProperty('firstName', testUser.firstName)
     }
   );
 });

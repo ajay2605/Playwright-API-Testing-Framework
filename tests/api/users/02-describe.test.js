@@ -25,19 +25,21 @@ test.describe("User API Tests", () => {
 
   test.afterEach(async () => {
     if (testUserId) {
-      await apiUtils.sendRequest('delete',`/users/${testUserId}`);
+      await apiUtils.sendRequest("delete", `/users/${testUserId}`);
     }
   });
 
   // 3. Atomic Tests
   test("GET /users returns valid structure - 1", async () => {
-    const response = await apiUtils.sendRequest('get',"/users");
+    const response = await apiUtils.sendRequest("get", "/users");
     await Logger.logResponse(response);
   });
 
   test("POST /users/register creates new user - 2", async () => {
     const testUser = generateTestUser();
-    const response = await apiUtils.sendRequest('post',"/users/register", {data: testUser});
+    const response = await apiUtils.sendRequest("post", "/users/register", {
+      data: testUser,
+    });
     const createdUser = await response.json();
     testUserId = createdUser.data._id; // Store for cleanup
     await Logger.logResponse(response);
@@ -45,7 +47,9 @@ test.describe("User API Tests", () => {
 
   test("POST /users/register creates new user - 3", async () => {
     const testUser = generateTestUser();
-    const response = await apiUtils.sendRequest('post',"/users/register", {data: testUser});
+    const response = await apiUtils.sendRequest("post", "/users/register", {
+      data: testUser,
+    });
     await Logger.logResponse(response);
     const createdUser = await response.json();
     testUserId = createdUser.data._id; // Store for cleanup
@@ -53,14 +57,18 @@ test.describe("User API Tests", () => {
 
   test("POST /users/register creates new user - 4", async () => {
     const testUser = generateTestUser();
-    const response = await apiUtils.sendRequest('post',"/users/register", {data: testUser});
+    const response = await apiUtils.sendRequest("post", "/users/register", {
+      data: testUser,
+    });
     await Logger.logResponse(response);
     const createdUser = await response.json();
     testUserId = createdUser.data._id; // Store for cleanup
   });
   test("POST /users/register creates new user - 5", async () => {
     const testUser = generateTestUser();
-    const response = await apiUtils.sendRequest('post',"/users/register", {data: testUser});
+    const response = await apiUtils.sendRequest("post", "/users/register", {
+      data: testUser,
+    });
     await Logger.logResponse(response);
     const createdUser = await response.json();
     testUserId = createdUser.data._id; // Store for cleanup

@@ -21,7 +21,9 @@ function generateUser({
 
 module.exports = generateUser;
 
+// generateUser() ---------- All random but fast, because no object initialization
 // {} (Empty)	-------------- All random
 // { firstName: null }	--------- firstName: null, others random
 // { email: "test@example.com" }	----- email set, others random
 // { lastName: "" }	-------- lastName: "", others random
+// { lastName: @#@$!#$@#!# }	-------- lastName: @#@$!#$@#!#, others random

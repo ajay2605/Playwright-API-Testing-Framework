@@ -7,10 +7,10 @@ module.exports = defineConfig({
     // ["html"],
     [
       "allure-playwright",
-      // {
-      //   outputFolder:
-      //     process.env.ALLURE_RESULTS_DIR || "reports/allure-results",
-      // },
+      {
+        resultsDir:
+          process.env.ALLURE_RESULTS_DIR || "reports/allure-results",
+      },
     ],
   ],
 });

@@ -7,27 +7,26 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "rm -rf allure-results && npx playwright test",
+    "test": "rm -rf reports/allure-results && npx playwright test",
     "changed": "rm -rf allure-results && npx playwright test --only-changed",
     "test:smoke": "npm run test -- --grep @smoke",
     "test:performance": "npm run test -- --grep @Performance --repeat-each 100",
     "test:sharding": "npm run test -- --repeat-each 10 --shard=1/2",
-    "report": "allure serve allure-results"
+    "report": "allure serve reports/allure-results"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^9.4.0",
-    "chai": "^5.1.2",
     "playwright": "^1.50.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.50.0",
     "allure-playwright": "^3.0.9",
     "dotenv": "^16.4.7",
-    "jest-json-schema": "^6.1.0",
     "eslint": "^9.19.0",
+    "jest-json-schema": "^6.1.0",
     "prettier": "^3.4.2"
   }
 }

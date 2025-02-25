@@ -1,9 +1,11 @@
 // generateToken.js
 const { request } = require("@playwright/test");
 const config = require("../config/config");
+require('dotenv').config()
 
 async function generateAuthToken() {
   // console.log("Config: ", config); // Add this line to debug
+  console.log(`Environment is ${process.env.ENVIRONMENT}`);
   const { baseUrl, emailOrMobileNo, password } = config; // Get values based on environment
 
   const context = await request.newContext();
